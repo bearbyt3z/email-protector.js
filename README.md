@@ -82,14 +82,14 @@ There are two methods available to insert your email address link into HTML docu
 The first one assumes creating a HTML element with an arbitrary ID and calling `append()` function with the ID and encoded email address as parameters:
 ```html
 <body>
-	<!-- script with appedn() method can be placed anywhere in a HTML document -->
-	<script>
-		EmailProtector.append('email-protector', 'hfre@qbznva.arg');
-	</script>
-	...
-	<p>
-		Please contact me at <span id="email-protector"></span>
-	</p>
+  <!-- script with appedn() method can be placed anywhere in a HTML document -->
+  <script>
+    EmailProtector.append('email-protector', 'hfre@qbznva.arg');
+  </script>
+  ...
+  <p>
+    Please contact me at <span id="email-protector"></span>
+  </p>
 </body>
 ```
 Please keep in mind, that the email link will be added as the last child of the provided HTML element (the same behavior as in case of [`Node.appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method).
@@ -99,22 +99,22 @@ The `append()` method uses [`window.onload`](https://developer.mozilla.org/en-US
 The above code will generate the following result:
 ```html
 <p>
-	Please contact me at
-	<span id="email-protector">
-		<a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-			<!-- mailto:spdgsl@mkuhrekslo.euh -->
-			ten
-			<!-- pre . -->
-			.
-			<!-- post . -->
-			niamod
-			<span>spdgsl@mkuhrekslo.euh</span>
-			<!-- pre @ -->
-			@
-			<!-- post @ -->
-			resu
-		</a>
-	</span>
+  Please contact me at
+  <span id="email-protector">
+    <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
+      <!-- mailto:spdgsl@mkuhrekslo.euh -->
+      ten
+      <!-- pre . -->
+      .
+      <!-- post . -->
+      niamod
+      <span>spdgsl@mkuhrekslo.euh</span>
+      <!-- pre @ -->
+      @
+      <!-- post @ -->
+      resu
+    </a>
+  </span>
 </p>
 ```
 
@@ -127,12 +127,12 @@ Second technique uses [`document.write()`](https://developer.mozilla.org/en-US/d
 
 ```html
 <body>
-	<p>
-		Please contact me at
-		<script>
-			EmailProtector.write('hfre@qbznva.arg');
-		</script>
-	</p>
+  <p>
+    Please contact me at
+    <script>
+      EmailProtector.write('hfre@qbznva.arg');
+    </script>
+  </p>
 </body>
 ```
 Notice that there is no parameter corresponding to the ID of a DOM element, because the email link is placed where the `<script>` tag occurs.
@@ -174,11 +174,11 @@ The argument must be a string representing encoded email address or an object wi
 Here is an example of all email link parameters passed to the write function:
 ```javascript
 EmailProtector.write({
-	email:   'hfre@qbznva.arg',
-	subject: 'Message from www',
-	body:    'Hi, I\'m contacting you',
-	cc:      'hfre2@qbznva.arg',
-	bcc:     'hfre3@qbznva.arg'
+  email:   'hfre@qbznva.arg',
+  subject: 'Message from www',
+  body:    'Hi, I\'m contacting you',
+  cc:      'hfre2@qbznva.arg',
+  bcc:     'hfre3@qbznva.arg'
 });
 ```
 The `cc` and `bcc` parameters correspond to `user2@domain.net` and `user3@domain.net` respectively.
@@ -216,8 +216,10 @@ The default value is `undefined` i.e. the email address is used as the link labe
 Use the CSS reverse obfuscation technique to hide the real email address displayed in the link label.
 The email address is written in reverse order and the following CSS code is used to display it in the correct way:
 ```css
-unicode-bidi: bidi-override;
-direction: rtl;
+#some-unique-id {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
 ```
 The default value is `true`.
 
@@ -265,7 +267,7 @@ EmailProtector.write('hfre@qbznva.arg', { linkLabel: 'Click here to contact me' 
 HTML result:
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	Click here to contact me
+  Click here to contact me
 </a>
 ```
 
@@ -274,15 +276,15 @@ HTML result:
 JavaScript input:
 ```javascript
 EmailProtector.write('hfre@qbznva.arg', {
-	cssReverse: false,
-	hiddenSpan: false,
-	htmlComments: false
+  cssReverse: false,
+  hiddenSpan: false,
+  htmlComments: false
 });
 ```
 HTML result:
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	user@domain.net
+  user@domain.net
 </a>
 ```
 
@@ -291,15 +293,15 @@ HTML result:
 JavaScript input:
 ```javascript
 EmailProtector.write('hfre@qbznva.arg', {
-	cssReverse: true,
-	hiddenSpan: false,
-	htmlComments: false
+  cssReverse: true,
+  hiddenSpan: false,
+  htmlComments: false
 });
 ```
 HTML Result (+ CSS text reversing style):
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	ten.niamod@resu
+  ten.niamod@resu
 </a>
 ```
 
@@ -308,17 +310,17 @@ HTML Result (+ CSS text reversing style):
 JavaScript input:
 ```javascript
 EmailProtector.write('hfre@qbznva.arg', {
-	cssReverse: false,
-	hiddenSpan: true,
-	htmlComments: false
+  cssReverse: false,
+  hiddenSpan: true,
+  htmlComments: false
 });
 ```
 HTML result (+ CSS hiding `<span>` style):
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	user
-	<span>spdgsl@mkuhrekslo.euh</span>
-	@domain.net
+  user
+  <span>spdgsl@mkuhrekslo.euh</span>
+  @domain.net
 </a>
 ```
 
@@ -327,24 +329,24 @@ HTML result (+ CSS hiding `<span>` style):
 JavaScript input:
 ```javascript
 EmailProtector.write('hfre@qbznva.arg', {
-	cssReverse: false,
-	hiddenSpan: false,
-	htmlComments: true
+  cssReverse: false,
+  hiddenSpan: false,
+  htmlComments: true
 });
 ```
 HTML result:
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	<!-- mailto:spdgsl@mkuhrekslo.euh -->
-	user
-	<!-- pre @ -->
-	@
-	<!-- post @ -->
-	domain
-	<!-- pre . -->
-	.
-	<!-- post . -->
-	net
+  <!-- mailto:spdgsl@mkuhrekslo.euh -->
+  user
+  <!-- pre @ -->
+  @
+  <!-- post @ -->
+  domain
+  <!-- pre . -->
+  .
+  <!-- post . -->
+  net
 </a>
 ```
 
@@ -353,9 +355,9 @@ HTML result:
 JavaScript input:
 ```javascript
 EmailProtector.write('hfre@qbznva.arg', {
-	cssReverse: false,
-	hiddenSpan: false,
-	htmlComments: true
+  cssReverse: false,
+  hiddenSpan: false,
+  htmlComments: true
 });
 ```
 or simply:
@@ -365,17 +367,17 @@ EmailProtector.write('hfre@qbznva.arg');
 HTML result:
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
-	<!-- mailto:spdgsl@mkuhrekslo.euh -->
-	ten
-	<!-- pre . -->
-	.
-	<!-- post . -->
-	niamod
-	<span>spdgsl@mkuhrekslo.euh</span>
-	<!-- pre @ -->
-	@
-	<!-- post @ -->
-	resu
+  <!-- mailto:spdgsl@mkuhrekslo.euh -->
+  ten
+  <!-- pre . -->
+  .
+  <!-- post . -->
+  niamod
+  <span>spdgsl@mkuhrekslo.euh</span>
+  <!-- pre @ -->
+  @
+  <!-- post @ -->
+  resu
 </a>
 ```
 
