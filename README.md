@@ -79,10 +79,10 @@ There are two methods available to insert your email address link into HTML docu
 
 ### Using `append()` method
 
-The first one assumes creating a HTML element with an arbitrary ID and calling `append()` function with the ID and encoded email address as parameters:
+The first one assumes creating a HTML element with an arbitrary ID and calling `append()` function with the ID and the encoded email address as parameters:
 ```html
 <body>
-  <!-- script with appedn() method can be placed anywhere in a HTML document -->
+  <!-- script with append() function can be placed anywhere in a HTML document -->
   <script>
     EmailProtector.append('email-protector', 'hfre@qbznva.arg');
   </script>
@@ -92,9 +92,9 @@ The first one assumes creating a HTML element with an arbitrary ID and calling `
   </p>
 </body>
 ```
-Please keep in mind, that the email link will be added as the last child of the provided HTML element (the same behavior as in case of [`Node.appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method).
+Please keep in mind, that the email link will be added as the last child of the provided HTML element. This is similar behavior as in case of [`Node.appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method, which is called by the `append()` method.
 
-The `append()` method uses [`window.onload`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) event to add an email address link to the specified HTML element, so it can be executed anywhere in a HTML document.
+This function uses [`window.onload`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) event to add an email address link to the specified HTML element, so it can be executed anywhere in a HTML document.
 
 The above code will generate the following result:
 ```html
