@@ -72,7 +72,7 @@ rpbo@aljxfk.kbq
 See [Configuration Parameters](#configuration-parameters) section explaining the usage of `code` and rest of configuration parameters.
 
 
-## Inserting Email Address into HTML document
+## Inserting email address into HTML document
 
 There are two methods available to insert your email address link into HTML document.
 
@@ -252,7 +252,7 @@ The default value of this parameter is `true`.
 This option is taken into account only when `linkLabel` is unset (undefined).
 
 
-## Code Examples
+## Code examples
 
 Here are some examples of tuning the output result from the library.
 To keep it simple only an email address is passed as the email link parameter.
@@ -397,4 +397,4 @@ HTML result:
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
 
-I really like the open-source software paradigm, but if you need to use this code in a closed commercial project, please contact me, so I can consider changing it to the MIT License :slightly_smiling_face:.
+I really like the open-source software paradigm, but if you need to use this code in a closed commercial project, please contact me, so I can consider changing it to the MIT License :slightly_smiling_face:
