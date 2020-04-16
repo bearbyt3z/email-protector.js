@@ -92,9 +92,9 @@ The first one assumes creating a HTML element with an arbitrary ID and calling `
   </p>
 </body>
 ```
-Please keep in mind, that the email link will be added as the last child of the provided HTML element. This is similar behavior as in case of [`Node.appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method, which is called by the `append()` method.
+Please keep in mind, that the `mailto` link will be added as the last child of the provided HTML element. This is similar behavior as in case of [`Node.appendChild()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/appendChild) method, which is called by the `append()` method.
 
-This function uses [`window.onload`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) event to add an email address link to the specified HTML element, so it can be executed anywhere in a HTML document.
+This function uses [`window.onload`](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload) event to add the email link to the specified HTML element, so it can be executed anywhere in a HTML document.
 
 The above code will generate the following result:
 ```html
@@ -118,12 +118,12 @@ The above code will generate the following result:
 </p>
 ```
 
-**Notice: Please keep in mind that `id` attribute of every link tag is randomly generated, and should be unique across the entire webpage.**
+**Notice: Please keep in mind that `id` attribute of every anchor tag is randomly generated, and should be unique across the entire webpage.**
 
 
 ### Using `write()` method
 
-Second technique uses [`document.write()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/write) method to print an email link exactly after the `<script>` tag, where the `EmailProtector.write()` method is called:
+Second technique uses [`document.write()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/write) method to print the `mailto` link exactly after the `<script>` tag, where the `EmailProtector.write()` method was called:
 
 ```html
 <body>
@@ -137,7 +137,7 @@ Second technique uses [`document.write()`](https://developer.mozilla.org/en-US/d
 ```
 Notice that there is no parameter corresponding to the ID of a DOM element, because the email link is placed where the `<script>` tag occurs.
 
-The above code will generate a very similar result to the `append()` method:
+The above code will generate a very similar result to the previous method:
 
 ```html
 <p>
@@ -163,7 +163,7 @@ The above code will generate a very similar result to the `append()` method:
 
 ## Email parameters
 
-You can specify email link parameters using first (in case of `write()`) or second (in case of `aplly()`) argument when calling both methods.
+You can specify `mailto` link parameters using first (in case of `write()`) or second (in case of `aplly()`) argument when calling each method.
 The argument must be a string representing encoded email address or an object with any supported link parameters:
 * `email` - an ROT encoded email address;
 * `subject` - the subject of an email message (should not be encoded);
@@ -171,7 +171,7 @@ The argument must be a string representing encoded email address or an object wi
 * `cc` - carbon copy of an email (also ROT encoded);
 * `bcc` - blind carbon copy (also ROT encoded).
 
-Here is an example of all email link parameters passed to the write function:
+Here is an example of all the above mentioned `mailto` link parameters passed to the `write()` function:
 ```javascript
 EmailProtector.write({
   email:   'hfre@qbznva.arg',
@@ -181,40 +181,40 @@ EmailProtector.write({
   bcc:     'hfre3@qbznva.arg'
 });
 ```
-The `cc` and `bcc` parameters correspond to `user2@domain.net` and `user3@domain.net` respectively.
-As stated above they also have to be ROT encoded, because they will be subjected to the decoding process as well (we don't want to expose them to spam bots either).
+The `cc` and `bcc` parameters in the example correspond to `user2@domain.net` and `user3@domain.net` addresses respectively.
+As stated above they also have to be ROT encoded, because they will be subjected to the decoding process in the same way the main email address is (we don't want to expose them to spam bots either).
 
 
 ## Configuration parameters
 
 The last parameter of the `append()` and `write()` functions specifies the `EmailProtector` configuration object.
-There are several config options you can choose from to adjust encoding and the display value of an email link.
+There are several config options to choose from that allow to adjust encoding and the display value of the generated `mailto` link.
 
 
 ### `code`
 
-Specifies the code value for email decoding i.e. [Caesar cipher code](https://en.wikipedia.org/wiki/ROT13).
-You have to pass the code value that will revert back the encoding, so this parameter is crucial for proper work of the `EmailProtector`.
+Specifies the code value for email decoding i.e. [Caesar cipher code](https://en.wikipedia.org/wiki/Caesar_cipher).
+You have to pass the code value that will revert back the encoding, so this parameter is crucial for proper work of the `EmailProtector.decode()` function.
 
-The code can be computed as the difference between `26` and the code value (modulo 26) used in encoding.
+The code value can be computed as the difference between `26` and the code value used in encoding (modulo 26).
 For example if the code `11` was used to encode an email address, then the code `15` should be used for decoding.
-You can also use numbers greater than 26, but the `rot()` and decoding functions will do modulo operation anyway.
+You can also use numbers greater than 26, but the `rot()` and decoding function will do modulo operation anyway.
 
-The default value is `13` i.e. ROT13 encoding is assumed.
-Notice that for this value both encoder and decoder code are the same.
+The default value is `13` i.e. [ROT13](https://en.wikipedia.org/wiki/ROT13) encoding is assumed.
+Notice that when encoding by `13` the decoder code value will be the same.
 
 
 ### `linkLabel`
 
-Specifies the display value used as an email link label. If set the provided email address will not be printed inside the email link. Instead the value of this parameter will be used.
+Specifies the display value used as the `mailto` link label. If set the provided email address will not be printed inside the email link. Instead the value of this parameter will be used.
 
 The default value is `undefined` i.e. the email address is used as the link label.
 
 
 ### `cssReverse`
 
-Use the CSS reverse obfuscation technique to hide the real email address displayed in the link label.
-The email address is written in reverse order and the following CSS code is used to display it in the correct way:
+Use the CSS reverse obfuscation technique to hide the real email address displayed as the `mailto` link label.
+The email address is written in reverse order and the following CSS code is used to display it right to a user:
 ```css
 #some-unique-id {
   unicode-bidi: bidi-override;
@@ -228,7 +228,7 @@ This option is taken into account only when `linkLabel` is unset (undefined).
 
 ### `hiddenSpan`
 
-Inserts a `<span>` element in the middle of the email link label (before `@` char).
+Inserts a `<span>` element in the middle of the `mailto` link label (before `@` char).
 The `span` is hidden using CSS `display: none` property, so it is invisible for a user.
 
 The default value is `true`.
@@ -238,11 +238,11 @@ This option is taken into account only when `linkLabel` is unset (undefined).
 
 ### `htmlComments`
 
-Adds another obfuscation technique using HTML comments. Dot (`.`) and at (`@`) signs are extended with comments in the following way:
+Adds another obfuscation technique using HTML comments. Dot (`.`) and at (`@`) signs are extended with comments in the following manner:
 ```html
 <!-- pre @ -->@<!-- post @ -->
 ```
-Furthermore there is another comment inserted at the beginning of the email link label with some fake (generated) email address, e.g.:
+Furthermore there is another comment inserted at the beginning of the `mailto` link label with some fake (generated) email address, e.g.:
 ```html
 <!-- mailto:spdgsl@mkuhrekslo.euh -->
 ```
@@ -255,14 +255,16 @@ This option is taken into account only when `linkLabel` is unset (undefined).
 ## Code examples
 
 Here are some examples of tuning the output result from the library.
-To keep it simple only an email address is passed as the email link parameter.
-Please look also at the `examples.html` file where you can find more examples of the library usage.
+To keep it simple only the email address is passed as an email link parameter.
+Please look also at the `examples.html` file where you can find more explanatory examples of the library usage.
 
 ---
 
 JavaScript input:
 ```javascript
-EmailProtector.write('hfre@qbznva.arg', { linkLabel: 'Click here to contact me' });
+EmailProtector.write('hfre@qbznva.arg', {
+  linkLabel: 'Click here to contact me'
+});
 ```
 HTML result:
 ```html
@@ -298,7 +300,7 @@ EmailProtector.write('hfre@qbznva.arg', {
   htmlComments: false
 });
 ```
-HTML Result (+ CSS text reversing style):
+HTML Result (+ CSS style for text reversing):
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
   ten.niamod@resu
@@ -315,7 +317,7 @@ EmailProtector.write('hfre@qbznva.arg', {
   htmlComments: false
 });
 ```
-HTML result (+ CSS hiding `<span>` style):
+HTML result (+ CSS style for hiding the `<span>` element):
 ```html
 <a id="_k905fu05ixbj1tazna" href="znvygb:hfre@qbznva.arg">
   user
