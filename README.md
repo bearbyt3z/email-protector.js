@@ -8,6 +8,25 @@ to hide an email address and decode it whenever the user clicks on a link (any m
 There are also some other obfuscation techniques used to protect email addresses as CSS reverse technique, hidden `<span>` addition, and HTML comments insertion.
 Look at the [Resources](#resources) section for more details about the subject, especially the first two articles.
 
+## Table of contents
+
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+* [Preparing email address](#preparing-email-address)
+* [Inserting email address into HTML document](#inserting-email-address-into-HTML-document)
+  * [Using `append()` method](#using-append()-method)
+  * [Using `write()` method](#using-write()-method)
+* [Email parameters](#email-parameters)
+* [Configuration parameters](#configuration-parameters)
+  * [`code`](#code)
+  * [`linkLabel`](#linklabel)
+  * [`cssReverse`](#cssreverse)
+  * [`hiddenSpan`](#hiddenspan)
+  * [`htmlcomments`](#htmlcomments)
+* [Code examples](#code-examples)
+* [Resources](#resources)
+* [License](#license)
+
 
 ## Prerequisites
 
@@ -69,7 +88,7 @@ The output will be:
 rpbo@aljxfk.kbq
 ```
 
-See [Configuration Parameters](#configuration-parameters) section explaining the usage of `code` and rest of configuration parameters.
+See [Configuration Parameters](#configuration-parameters) section explaining the usage of the `code` and the rest of configuration parameters.
 
 
 ## Inserting email address into HTML document
