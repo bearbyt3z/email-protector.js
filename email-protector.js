@@ -1,3 +1,5 @@
+'use strict';
+
 const EmailProtector = {
   defaultConfig: {
     code: 13,
