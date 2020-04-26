@@ -30,28 +30,15 @@ Look at the [Resources](#resources) section for more details about the subject, 
 
 ## Prerequisites
 
-There are no any prerequisites for the library to use other than JavaScript enabled in a browser.
-It should run without issues on any modern web browser.
-The library was tested on:
+There are no prerequisites for the library to use other than JavaScript enabled in a browser.
+The library was compiled with [Babel transcompiler](https://babeljs.io) with default parameters of [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) preset, so it should run without issues on any modern web browser.
+It was tested on:
 
 * Mozilla Firefox v75
 * Google Chrome v80
 * Opera v67
 
-But it should run smoothly also in:
-
-* Mozilla Firefox &ge; v47
-* Google Chrome &ge; v54
-* Opera &ge; v41
-* Safari &ge; v10.1
-* Microsoft Edge &ge; v14
-* (no Internet Explorer support)
-
-These are the browser versions that are compatible with [`Object.entries()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries) method (ES8), which is used in the library.
-
-Some older browsers can have problems with new [ECMAScript](https://www.ecma-international.org/publications/standards/Ecma-262.htm) syntax but hey, who uses them nowadays? :wink:
-
-If you really need to run the library on some ancient browsers, please use [Babel transcompiler](https://babeljs.io) or pull the request, so I can make a polyfill for the library and attach the compiled version to the repository.
+The library was minified using [Terser Plugin](https://webpack.js.org/plugins/terser-webpack-plugin) in [webpack](https://webpack.js.org/configuration/optimization/) with default parameters. Source map was included in the production build (see `build` directory). You can find webpack configuration files attached to the repository root folder.
 
 
 ## Installation
