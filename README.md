@@ -56,14 +56,14 @@ If you really need to run the library on some ancient browsers, please use [Babe
 
 ## Installation
 
-To use the library with your HTML documents include the `email-protector.js` file using `<script>` tag.
+To use the library with your HTML documents include the `email-protector.js` file (`build` directory) using `<script>` tag.
 You can download it and include as a local file (this way future changes to the project will not break your webpage):
 ```html
 <script src="assets/js/email-protector.js"></script>
 ```
 Or you can attach the library with the global link as well:
 ```html
-<script src="https://raw.githubusercontent.com/bearbyt3z/email-protector.js/master/email-protector.js"></script>
+<script src="https://raw.githubusercontent.com/bearbyt3z/email-protector.js/master/build/email-protector.js"></script>
 ```
 
 ## Preparing email address
@@ -275,7 +275,7 @@ This option is taken into account only when `linkLabel` is unset (undefined).
 
 Here are some examples of tuning the output result from the library.
 To keep it simple only the email address is passed as an email link parameter.
-Please look also at the `examples.html` file where you can find more explanatory examples of the library usage.
+Please look also at the `build/examples.html` file where you can find more explanatory examples of the library usage.
 
 ---
 

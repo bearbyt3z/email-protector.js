@@ -1,6 +1,6 @@
-'use strict';
+import tools from './tools.js';
 
-const EmailProtector = {
+export const EmailProtector = {
   defaultConfig: {
     code: 13,
     cssReverse: true,
@@ -23,7 +23,7 @@ const EmailProtector = {
         throw new TypeError(`EmailProtector: element with ${parentID} ID not found`);
       }
       const linkNode = document.createElement('A');
-      linkNode.id = Tools.getUniqID();
+      linkNode.id = tools.getUniqID();
       parentNode.appendChild(linkNode);
       EmailProtector._setupLink(linkNode.id, params, config);
     });
@@ -31,19 +31,19 @@ const EmailProtector = {
   write: (params = {}, config = {}) => {
     params = EmailProtector._prepareParams(params);
     config = EmailProtector._prepareConfig(config);
-    const uniqID = Tools.getUniqID();
+    const uniqID = tools.getUniqID();
     document.write(`<a id="${uniqID}"></a>`);
     EmailProtector._setupLink(uniqID, params, config);
   },
   _prepareParams: (params) => {
-    if (Tools.isString(params)) {  // allow to pass an email address as a string only
+    if (tools.isString(params)) {  // allow to pass an email address as a string only
       params = { email: params };
     }
     if (!(params instanceof Object)) {
       throw new TypeError('EmailProtector: params should be a string or an object');
     }
     params = Object.assign({}, EmailProtector.params, params);
-    if (!Tools.isValidEmail(params.email)) {
+    if (!tools.isValidEmail(params.email)) {
       throw new TypeError(`EmailProtector: ${params.email} is not a valid email address`);
     }
     return params;
@@ -72,10 +72,10 @@ const EmailProtector = {
       linkContainer.appendChild(document.createTextNode(config.linkLabel));
     } else {
       let linkText = EmailProtector.rot(params.email, code);
-      const randomEmail = Tools.getRandomEmail();
+      const randomEmail = tools.getRandomEmail();
       const styleNode = document.createElement('STYLE');
       if (config.cssReverse) {
-        linkText = Tools.reverseString(linkText);
+        linkText = tools.reverseString(linkText);
         styleNode.appendChild(document.createTextNode(`
           #${uniqID} {
             unicode-bidi: bidi-override;
@@ -114,7 +114,7 @@ const EmailProtector = {
   _extendTextNodeWithComments: (node, searchStrings) => {
     if (node.nodeType !== Node.TEXT_NODE) return false;
     searchStrings = [].concat(searchStrings);  // ensure it's an array
-    const searchRegExp = new RegExp(searchStrings.map((str) => Tools.regExpEscape(str)).join('|'), 'g');
+    const searchRegExp = new RegExp(searchStrings.map((str) => tools.regExpEscape(str)).join('|'), 'g');
     const matches = node.textContent.match(searchRegExp) || [];  // [] => in case no match is found
     for (const str of matches) {
       const preComment = document.createComment(` pre ${str} `);
@@ -150,18 +150,4 @@ const EmailProtector = {
     }
     return (result.length > 0) ? `?${result.substr(1)}` : '';
   },
-};
-
-const Tools = {
-  isString: (value) => typeof value === 'string' || value instanceof String,
-  isValidEmail: (str) => /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(String(str)),
-  regExpEscape: (str) => String(str).replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'),
-  reverseString: (str) => String(str).split('').reverse().join(''),
-  getRandomString: (length = 8, charset = 'abcdefghijklmnopqrstuvwxyz') => {
-    let result = '';
-    while (length--) result += charset[Math.floor(Math.random() * charset.length)];
-    return result;
-  },
-  getRandomEmail: () => `${Tools.getRandomString(6)}@${Tools.getRandomString(10)}.${Tools.getRandomString(3)}`,
-  getUniqID: () => `_${Date.now().toString(36) + Math.random().toString(36).substr(2)}`,
 };

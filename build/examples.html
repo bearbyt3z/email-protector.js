@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmailProtector Examples</title>
+<script src="email-protector.js"></script></head>
+
+<body>
+  <script>
+    // You can use the rot() function to encode an email address:
+    console.log('user@domain.net encoded with 13:', EmailProtector.rot('user@domain.net'));
+    console.log('seconduser@domain.net encoded with 11:', EmailProtector.rot('seconduser@domain.net', 11));
+    console.log('thirduser@domain.net encoded with 47:', EmailProtector.rot('thirduser@domain.net', 47));
+  </script>
+  <p>
+    <strong>Tip 1:</strong> See browser console for encoded email addresses.<br>
+    <strong>Tip 2:</strong> Use code inspector to see results in HTML (before and after clicking a link).
+  </p>
+  <p>
+    Here is an email address inserted using append() method: <span id="email-protector"></span>
+    <script>
+      EmailProtector.append('email-protector', 'hfre@qbznva.arg');
+    </script>
+  </p>
+  <p>
+    Here is an email address inserted using write() method:
+    <script>
+      EmailProtector.write('hfre@qbznva.arg');
+    </script>
+  </p>
+  <p>
+    You can also specify <span id="email-link-label"></span>.
+    <script>
+      EmailProtector.append('email-link-label', 'hfre@qbznva.arg', { linkLabel: 'email link label' });
+    </script>
+  </p>
+  <p>
+    Second email address decoded with code 15:
+    <script>
+      EmailProtector.write('dpnzyofdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because was encoded with 11
+    </script>
+  </p>
+  <p>
+    Third email address decoded with code 5 (26 - 47 % 26 = 5):
+    <script>
+      EmailProtector.write('ocdmypnzm@yjhvdi.izo', { code: 5 }); // decoding with 5, because was encoded with 47
+    </script>
+  </p>
+  <hr>
+  <script>
+    EmailProtector.setGlobalParams({ email: 'dpnzyofdpc@ozxlty.ype', subject: 'Message from www' });
+    EmailProtector.setGlobalConfig({ code: 15, hiddenSpan: false, htmlComments: false });
+  </script>
+  <p>
+    My email address using global params and config:
+    <script>
+      EmailProtector.write();
+    </script>
+  </p>
+  <p>
+    <script>
+      EmailProtector.resetParams();
+      EmailProtector.resetConfig();
+    </script>
+    My email address after reset:
+    <script>
+      EmailProtector.write('hfre@qbznva.arg');
+      EmailProtector.write();  // this should throw a TypeError: undefined is not a valid email address
+    </script>
+  </p>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{
+  "name": "email-protector.js",
+  "version": "0.3",
+  "description": "JavaScript library for protecting email addresses from spam bots",
+  "scripts": {
+    "build": "webpack --config webpack.config.prod.js",
+    "build-dev": "webpack --config webpack.config.dev.js",
+    "start": "webpack-dev-server --config webpack.config.dev.js --color --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/bearbyt3z/email-protector.js.git"
+  },
+  "keywords": [
+    "email protector",
+    "email obfuscator"
+  ],
+  "author": "bearbyt3z",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/bearbyt3z/email-protector.js/issues"
+  },
+  "homepage": "https://github.com/bearbyt3z/email-protector.js#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^4.2.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  }
+}
