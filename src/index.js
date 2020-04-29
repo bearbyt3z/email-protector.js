@@ -13,10 +13,11 @@ export const EmailProtector = {
   config: {},
   params: {},
 
-  rot: (str, code = 13) => String(str).replace(
-    /[a-z]/gi,
-    (c) => String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + code % 26) ? c : c - 26)
-  ),
+  rot: (str, code = 13) => String(str).replace(/[a-z]/gi, (char) => {
+    const upperLimit = char <= 'Z' ? 90 : 122;
+    const rotedChar = char.charCodeAt(0) + (code % 26);
+    return String.fromCharCode((rotedChar <= upperLimit) ? rotedChar : rotedChar - 26);
+  }),
   append: (parentID, params = {}, config = {}) => {
     const paramsPrepared = Helper.prepareParams(params);
     const configPrepared = Helper.prepareConfig(config);
@@ -136,27 +137,25 @@ Helper.extendTextNodeWithComments = (node, searchStrings) => {
   const searchStringsArray = [].concat(searchStrings);  // ensure it's an array
   const searchRegExp = new RegExp(searchStringsArray.map((str) => tools.regExpEscape(str)).join('|'), 'g');
   const matches = node.textContent.match(searchRegExp) || [];  // [] => in case no match is found
-  for (const str of matches) {
+  let currentNode = node;
+  matches.forEach((str) => {
     const preComment = document.createComment(` pre ${str} `);
     const postComment = document.createComment(` post ${str} `);
-    const strPos = node.textContent.indexOf(str);
+    const strPos = currentNode.textContent.indexOf(str);
     if (strPos >= 0) {
-      const strSplit = node.splitText(strPos);
-      node.parentNode.insertBefore(preComment, strSplit);
+      const strSplit = currentNode.splitText(strPos);
+      currentNode.parentNode.insertBefore(preComment, strSplit);
       const strSplitAfter = strSplit.splitText(str.length);
-      node.parentNode.insertBefore(postComment, strSplitAfter);
-      node = strSplitAfter;
+      currentNode.parentNode.insertBefore(postComment, strSplitAfter);
+      currentNode = strSplitAfter;
     }
-  }
+  });
   return true;
 };
 
 Helper.prepareEmailLinkParams = (params) => {
-  let result = '';
-  for (const [key, value] of Object.entries(params)) {
-    if (key.match(/^cc|bcc|subject|body$/gi)) {
-      result += `&${key}=${encodeURIComponent(value)}`;
-    }
-  }
+  const result = Object.entries(params).reduce(
+    (acc, [key, value]) => (key.match(/^cc|bcc|subject|body$/gi) ? `${acc}&${key}=${encodeURIComponent(value)}` : acc), '',
+  );
   return (result.length > 0) ? `?${result.substr(1)}` : '';
 };
