@@ -12,7 +12,7 @@
     // You can use the rot() function to encode an email address:
     console.log('user@domain.net encoded with 13:', EmailProtector.rot('user@domain.net'));
     console.log('seconduser@domain.net encoded with 11:', EmailProtector.rot('seconduser@domain.net', 11));
-    console.log('thirduser@domain.net encoded with 47:', EmailProtector.rot('thirduser@domain.net', 47));
+    console.log('thirduser@sub.domain.net encoded with 47:', EmailProtector.rot('thirduser@sub.domain.net', 47));
   </script>
   <p>
     <strong>Tip 1:</strong> See browser console for encoded email addresses.<br>
@@ -39,13 +39,13 @@
   <p>
     Second email address decoded with code 15:
     <script>
-      EmailProtector.write('dpnzyofdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because was encoded with 11
+      EmailProtector.write('dpnzyofdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because it was encoded with 11
     </script>
   </p>
   <p>
     Third email address decoded with code 5 (26 - 47 % 26 = 5):
     <script>
-      EmailProtector.write('ocdmypnzm@yjhvdi.izo', { code: 5 }); // decoding with 5, because was encoded with 47
+      EmailProtector.write('ocdmypnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47
     </script>
   </p>
   <hr>
@@ -69,6 +69,10 @@
       EmailProtector.write('hfre@qbznva.arg');
       EmailProtector.write();  // this should throw a TypeError: undefined is not a valid email address
     </script>
+  </p>
+  <p style="font-style: italic;">
+    There should be a TypeError thrown: "EmailProtector: undefined is not a valid email address"<br>
+    Please see the console and the page code to understand what is the reason :)
   </p>
 </body>
 
