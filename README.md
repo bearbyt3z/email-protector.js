@@ -34,7 +34,7 @@ There are no prerequisites for the library to use other than JavaScript enabled 
 The library was compiled with [Babel transcompiler](https://babeljs.io) with default parameters of [`@babel/preset-env`](https://babeljs.io/docs/en/babel-preset-env) preset, so it should run without issues on any modern web browser.
 It was tested on:
 
-* Mozilla Firefox v75
+* Mozilla Firefox v79
 * Google Chrome v80
 * Opera v67
 
