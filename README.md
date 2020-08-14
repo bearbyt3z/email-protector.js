@@ -23,6 +23,7 @@ Look at the [Resources](#resources) section for more details about the subject, 
   * [`cssReverse`](#cssreverse)
   * [`hiddenSpan`](#hiddenspan)
   * [`htmlcomments`](#htmlcomments)
+* [Using global parameters and configuration](#using-global-parameters-and-configuration)
 * [Code examples](#code-examples)
 * [Resources](#resources)
 * [License](#license)
@@ -256,6 +257,48 @@ Furthermore there is another comment inserted at the beginning of the `mailto` l
 The default value of this parameter is `true`.
 
 This option is taken into account only when `linkLabel` is unset (undefined).
+
+
+## Using global parameters and configuration
+
+Email message parameters for the library as well as configuration can be set as global using `setGlobalParams()` and `setGlobalConfig()` methods respectively.
+
+```html
+<head>
+  ...
+  <script>
+    EmailProtector.setGlobalParams({ email: 'dpnzyo.fdpc@ozxlty.ype', subject: 'Message from www' });
+    EmailProtector.setGlobalConfig({ code: 15, hiddenSpan: false, htmlComments: false });
+  </script>
+</head>
+<body>
+  <p>
+    Please contact me at
+    <script>
+      EmailProtector.write(); // calling without the email parameter
+    </script>
+  </p>
+  ...
+  <p>
+    My email address:
+    <script>
+      EmailProtector.write();
+    </script>
+  </p>
+  ...
+</body>
+```
+
+To reset global parameters use `resetParams()` method and to reset global configuration use `resetConfig()` method:
+```javascript
+EmailProtector.resetParams();
+EmailProtector.resetConfig();
+```
+
+After resetting global parameters you cannot call `write()` method without specifying the value of the email address parameter:
+```javascript
+EmailProtector.write(); // this will throw a TypeError: "EmailProtector: undefined is not a valid email address"
+```
 
 
 ## Code examples
