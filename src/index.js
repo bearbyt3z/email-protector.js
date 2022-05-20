@@ -154,8 +154,6 @@ Helper.extendTextNodeWithComments = (node, searchStrings) => {
 };
 
 Helper.prepareEmailLinkParams = (params) => {
-  const result = Object.entries(params).reduce(
-    (acc, [key, value]) => (key.match(/^cc|bcc|subject|body$/gi) ? `${acc}&${key}=${encodeURIComponent(value)}` : acc), '',
-  );
+  const result = Object.entries(params).reduce((acc, [key, value]) => (key.match(/^cc|bcc|subject|body$/gi) ? `${acc}&${key}=${encodeURIComponent(value)}` : acc), '');
   return (result.length > 0) ? `?${result.substr(1)}` : '';
 };
