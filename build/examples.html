@@ -35,103 +35,110 @@
     console.log('third.user@sub.domain.net encoded with 47:', EmailProtector.rot('third.user@sub.domain.net', 47));
   </script>
 
-  <p>
-    <strong>Tip 1:</strong> See the browser console for the encoded values of email addresses.<br>
-    <strong>Tip 2:</strong> Use the code inspector to see results in HTML (before and after clicking a link).
-  </p>
-
   <section>
-    <h1>Simple in-place output</h1>
-  </section>
+    <h1>EmailProtector Examples</h1>
 
-  <p>
-    The email address inserted using the <code>append()</code> method: <span id="email-protector"></span>
-    <script>
-      EmailProtector.append('email-protector', 'hfre@qbznva.arg');
-    </script>
-  </p>
-  <pre><code>EmailProtector.append('email-protector', 'hfre@qbznva.arg');</code></pre>
-
-  <p>
-    The email address inserted using the <code>write()</code> method:
-    <script>
-      EmailProtector.write('hfre@qbznva.arg');
-    </script>
-  </p>
-  <pre><code>EmailProtector.write('hfre@qbznva.arg');</code></pre>
-  
-  <p>
-    You can also specify an <span id="email-link-label"></span>.
-    <script>
-      EmailProtector.append('email-link-label', 'hfre@qbznva.arg', { linkLabel: 'email link label' });
-    </script>
-  </p>
-  <pre><code>EmailProtector.append('email-link-label', 'hfre@qbznva.arg', { linkLabel: 'email link label' });</code></pre>
-
-  <p>
-    The second email address decoded with the code 15:
-    <script>
-      EmailProtector.write('dpnzyo.fdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because it was encoded with 11
-    </script>
-  </p>
-  <pre><code>EmailProtector.write('dpnzyo.fdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because it was encoded with 11</code></pre>
-
-  <p>
-    The third email address decoded with the code 5 (26 - 47 % 26 = 5):
-    <script>
-      EmailProtector.write('ocdmy.pnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47
-    </script>
-  </p>
-  <pre><code>EmailProtector.write('ocdmy.pnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47</code></pre>
-
-  <hr>
-
-  <section>
-    <h1>Using global parameters and configuration</h1>
-
-    <script>
-      EmailProtector.setGlobalParams({ email: 'dpnzyo.fdpc@ozxlty.ype', subject: 'Message from www' });
-      EmailProtector.setGlobalConfig({ code: 15, hiddenSpan: false, htmlComments: false });
-    </script>
     <p>
-      The email address with parameters configured using <code>setGlobalParams()</code> and <code>setGlobalConfig()</code>:
-      <script>
-        EmailProtector.write();
-      </script>
+      <strong>Tip 1:</strong> See the browser console for the encoded values of email addresses.<br>
+      <strong>Tip 2:</strong> Use the code inspector to see results in HTML (before and after clicking a link).
     </p>
-    <pre><code>EmailProtector.setGlobalParams({ email: 'dpnzyo.fdpc@ozxlty.ype', subject: 'Message from www' });
+
+    <hr>
+
+    <section>
+      <h2>Simple in-place output</h2>
+
+      <p>
+        The email address inserted using the <code>append()</code> method: <span id="email-protector"></span>
+        <script>
+          EmailProtector.append('email-protector', 'hfre@qbznva.arg');
+        </script>
+      </p>
+      <pre><code>EmailProtector.append('email-protector', 'hfre@qbznva.arg');</code></pre>
+
+      <p>
+        The email address inserted using the <code>write()</code> method:
+        <script>
+          EmailProtector.write('hfre@qbznva.arg');
+        </script>
+      </p>
+      <pre><code>EmailProtector.write('hfre@qbznva.arg');</code></pre>
+      
+      <p>
+        You can also specify an <span id="email-link-label"></span>.
+        <script>
+          EmailProtector.append('email-link-label', 'hfre@qbznva.arg', { linkLabel: 'email link label' });
+        </script>
+      </p>
+      <pre><code>EmailProtector.append('email-link-label', 'hfre@qbznva.arg', { linkLabel: 'email link label' });</code></pre>
+
+      <p>
+        The second email address decoded with the code 15:
+        <script>
+          EmailProtector.write('dpnzyo.fdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because it was encoded with 11
+        </script>
+      </p>
+      <pre><code>EmailProtector.write('dpnzyo.fdpc@ozxlty.ype', { code: 15 }); // decoding with 15, because it was encoded with 11</code></pre>
+
+      <p>
+        The third email address decoded with the code 5 (26 - 47 % 26 = 5):
+        <script>
+          EmailProtector.write('ocdmy.pnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47
+        </script>
+      </p>
+      <pre><code>EmailProtector.write('ocdmy.pnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47</code></pre>
+
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>Using global parameters and configuration</h2>
+
+      <script>
+        EmailProtector.setGlobalParams({ email: 'dpnzyo.fdpc@ozxlty.ype', subject: 'Message from www' });
+        EmailProtector.setGlobalConfig({ code: 15, hiddenSpan: false, htmlComments: false });
+      </script>
+      <p>
+        The email address with parameters configured using <code>setGlobalParams()</code> and <code>setGlobalConfig()</code>:
+        <script>
+          EmailProtector.write();
+        </script>
+      </p>
+      <pre><code>EmailProtector.setGlobalParams({ email: 'dpnzyo.fdpc@ozxlty.ype', subject: 'Message from www' });
 EmailProtector.setGlobalConfig({ code: 15, hiddenSpan: false, htmlComments: false });
 ...
 EmailProtector.write();</code></pre>
 
-    <p>
-      <script>
-        EmailProtector.resetParams();
-        EmailProtector.resetConfig();
-      </script>
-      Some different email address after using <code>resetParams()</code> and <code>resetConfig()</code>:
-      <script>
-        EmailProtector.write('hfre@qbznva.arg');
-      </script>
-    </p>
-    <pre><code>EmailProtector.resetParams();
+      <p>
+        <script>
+          EmailProtector.resetParams();
+          EmailProtector.resetConfig();
+        </script>
+        Some different email address after using <code>resetParams()</code> and <code>resetConfig()</code>:
+        <script>
+          EmailProtector.write('hfre@qbznva.arg');
+        </script>
+      </p>
+      <pre><code>EmailProtector.resetParams();
 EmailProtector.resetConfig();
 ...
 EmailProtector.write('hfre@qbznva.arg');</code></pre>
 
-    <p>
-      But using now the <code>write()</code> method without the email parameter (after resetting globals) will give an error:
-      <script>
-        EmailProtector.write();  // this should throw a TypeError: undefined is not a valid email address
-      </script>
-    </p>
-    <pre><code>EmailProtector.write();</code></pre>
-    <p class="console-error">
-      <code>Uncaught TypeError: EmailProtector: undefined is not a valid email address</code>
-    </p>
+      <p>
+        But using now the <code>write()</code> method without the email parameter (after resetting globals) will give an error:
+        <script>
+          EmailProtector.write(); // this should throw a TypeError: undefined is not a valid email address
+        </script>
+      </p>
+      <pre><code>EmailProtector.write();</code></pre>
+      <p class="console-error">
+        <code>Uncaught TypeError: EmailProtector: undefined is not a valid email address</code>
+      </p>
+
+    </section>
 
   </section>
 
 </body>
-
 </html>
