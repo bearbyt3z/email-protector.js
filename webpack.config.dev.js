@@ -5,8 +5,12 @@ module.exports = merge(commonConfig, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    index: 'examples.html',
-    contentBase: commonConfig.output.path,
-    writeToDisk: true,
+    static: {
+      directory: commonConfig.output.path,
+    },
+    devMiddleware: {
+      index: 'examples.html',
+      writeToDisk: true,
+    },
   },
 });
