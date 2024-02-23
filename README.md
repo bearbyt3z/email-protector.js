@@ -446,6 +446,6 @@ HTML result:
 
 ## License
 
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the GNU General Public License v3.0 &ndash; see the [LICENSE.md](LICENSE.md) file for details.
 
 I really like the open-source software paradigm, but if you need to use this code in a closed commercial project, please contact me, so I can consider changing it to the MIT License :smirk:
