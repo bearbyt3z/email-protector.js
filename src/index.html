@@ -33,6 +33,7 @@
     console.log('user@domain.net encoded with 13:', EmailProtector.rot('user@domain.net'));
     console.log('second.user@domain.net encoded with 11:', EmailProtector.rot('second.user@domain.net', 11));
     console.log('third.user@sub.domain.net encoded with 47:', EmailProtector.rot('third.user@sub.domain.net', 47));
+    console.log('forth.user+complex-address@sub.domain.complex-domain.net encoded with 13:', EmailProtector.rot('forth.user+complex-address@sub.domain.complex-domain.net', 13));
   </script>
 
   <section>
@@ -87,6 +88,14 @@
         </script>
       </p>
       <pre><code>EmailProtector.write('ocdmy.pnzm@npw.yjhvdi.izo', { code: 5 }); // decoding with 5, because it was encoded with 47</code></pre>
+
+      <p>
+        Complex email addresses are also supported:
+        <script>
+          EmailProtector.write('sbegu.hfre+pbzcyrk-nqqerff@fho.qbznva.pbzcyrk-qbznva.arg'); // using the default code 13
+        </script>
+      </p>
+      <pre><code>EmailProtector.write('sbegu.hfre+pbzcyrk-nqqerff@fho.qbznva.pbzcyrk-qbznva.arg'); // using the default code 13</code></pre>
 
     </section>
 

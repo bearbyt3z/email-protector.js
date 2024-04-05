@@ -54,7 +54,7 @@ export const EmailProtector = {
     const target = properEvent.target || properEvent.srcElement;
     if (!target.dataset.emailDecoded) {
       target.href = target.href.replace(
-        /\b(\w{6}:)?[\w.]+(@|%40)\w+(\.\w+)+\b/gi,
+        new RegExp(String.raw`\b([a-zA-Z]{6}:)?${tools.emailRegExp.source}\b`, 'gi'),
         (match) => EmailProtector.rot(match, code),
       );
       target.dataset.emailDecoded = true;
