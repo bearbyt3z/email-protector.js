@@ -1,6 +1,6 @@
 {
   "name": "email-protector.js",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "JavaScript library for protecting email addresses from spam bots",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
@@ -22,16 +22,16 @@
   },
   "homepage": "https://github.com/bearbyt3z/email-protector.js#readme",
   "devDependencies": {
-    "@babel/core": "^7.24.4",
-    "@babel/preset-env": "^7.24.4",
+    "@babel/core": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
     "babel-loader": "^9.1.3",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-webpack-plugin": "^4.1.0",
+    "eslint-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^5.6.0",
-    "webpack": "^5.91.0",
+    "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
     "webpack-merge": "^5.10.0"
