@@ -1,6 +1,6 @@
 {
   "name": "email-protector.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JavaScript library for protecting email addresses from spam bots",
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
