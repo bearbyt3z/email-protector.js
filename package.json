@@ -1,11 +1,12 @@
 {
   "name": "email-protector.js",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "JavaScript library for protecting email addresses from spam bots",
   "scripts": {
-    "build": "webpack --config webpack.config.prod.js",
-    "build-dev": "webpack --config webpack.config.dev.js",
-    "start": "webpack-dev-server --config webpack.config.dev.js --color --open"
+    "build": "jest && webpack --config webpack.config.prod.js",
+    "build-dev": "jest && webpack --config webpack.config.dev.js",
+    "start": "jest && webpack-dev-server --config webpack.config.dev.js --color --open",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-webpack-plugin": "^4.2.0",
     "html-webpack-plugin": "^5.6.0",
+    "jest": "^29.7.0",
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4",
