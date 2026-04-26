@@ -1,6 +1,6 @@
 {
   "name": "email-protector.js",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "description": "JavaScript library for protecting email addresses from spam bots",
   "scripts": {
     "build": "jest && webpack --config webpack.config.prod.js",
@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.29.2",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
-    "ajv": "^8.18.0",
+    "ajv": "^8.20.0",
     "babel-loader": "^10.1.1",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^10.2.1",
